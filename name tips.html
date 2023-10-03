@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Tips</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+ </head>
+<body>
+
+<h2>Aravind shows tip amounts</h2>
+
+<form>
+    <label for="base">Enter base amount </label>
+    <input type ="number" id="base" name="base"  value=50 > <br>
+
+    <label for="conversion">Enter tip percentage </label>
+    <input type ="text" id="conversion" name="conversion" value="15"> <br>
+
+    <input type="button" onclick="tips()" value="Show tips">
+    <p id="result"></p>
+</form>
+<div>
+    <script> 
+        function tips(){
+            var base=document.getElementById('base').value;
+            var tips=document.getElementById('conversion').value;
+
+            var myOutput="";
+            for(var i=0;i<5;i++){
+                var tippercent=parseFloat(tips)+(i*4);
+                var toShow=(base*tippercent)/100;
+                myOutput += tippercent+"% is "+toShow+"; ";
+            }
+            document.getElementById('result').innerHTML="Tips are:"+myOutput;
+        }
+        </script>
+</div>
+<form>
+    <input type="radio" id="sum" name="operation" value="sum" checked >
+        <label for="sum">sum</label></br>
+      
+        <input type="radio" id="diff" name="operation" value="difference">
+        <label for="diff">diff</label></br>
+      
+        <input type="radio" id="mult" name="operation" value="product">
+        <label for="mult">product</label></br>
+
+        <input type="button" onclick="checkOp()" value="Result">
+</form>
+<p id="output"></p>
+<script>
+    function checkOp(){
+        var x=document.getElementById('base').value;
+        var y=document.getElementById('conversion').value;
+       
+        var operation = document.querySelector('input[name="operation"]:checked').value;
+        var result;
+            switch (operation) {
+                case 'sum':
+                    result = parseFloat(x) + parseFloat(y);
+                    break;
+                case 'difference':
+                    result = x - y;
+                    break;
+                case 'product':
+                    result = x * y;
+                    break;
+            }
+            document.getElementById("output").innerHTML = result
+    }
+
+</script>
+
+
+</body>
+</html> 
