@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+ <title>Cruise</title>
+ <title>Candy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
+     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" 
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<body>
+
+<h2>Sambhavi goes on a cruise</h2>
+
+<form>
+    
+    <input type ="checkbox" id="Shared" name="Shared"  value="true"> 
+    <label for="Shared">Shares Cabin</label><br>
+
+    <input type ="checkbox" id="Breakfast" name="Breakfast" value="true" > 
+    <label for="Breakfast">Breakfast </label><br>
+    
+    <input type ="checkbox" id="Pool" name="Pool" value="false" > 
+    <label for="Pool">Pool Pass </label><br>
+
+    <input type="button" class="btn btn-success" onclick="selectCruise()" value="Select a cruise">
+</form>
+<form>
+    <label for="property">Enter the number of days</label>
+    <input type="text" id="property" name="property" value="days"> <br>
+    
+    <label for="price">Enter price</label>
+    <input type="text" id="price" name="price"> <br>
+
+    <input type="button" class="btn btn-success" value="Update the cruise" onclick="updateCruise()">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+var my_cruise={};
+function selectCruise(){
+    my_cruise={}
+    let share=document.getElementById("Shared").checked
+        let breakfast=document.getElementById("Breakfast").checked
+        let pool=document.getElementById("Pool").checked
+        if(share)
+        {
+            my_cruise.share = true;
+        }
+        else
+        {
+            my_cruise.share = false;
+        }
+        if(breakfast)
+        {
+            my_cruise.breakfast = true;
+        }
+        else
+        {
+            my_cruise.breakfast = false;
+        }
+        if(pool)
+        {
+            my_cruise.pool = true;
+        }
+        else
+        {
+            my_cruise.pool = false;
+        }
+        document.getElementById("result").innerHTML=JSON.stringify( my_cruise)
+    } 
+    function updateCruise(){
+        let property=document.getElementById("property").value;
+        let price=document.getElementById("price").value;
+        my_cruise["property"]=property;
+        my_cruise["price"]=price;
+        document.getElementById("result").innerHTML=JSON.stringify(my_cruise)
+    }
+
+</script>
+
+</body>
+</html> 
